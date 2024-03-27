@@ -12,7 +12,7 @@ This is a web application built with Laravel for the backend and Vue.js for the 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/yourrepository.git
+    git clone https://github.com/KristapsSteins/Hacker-News-Scraper.git
     ```
 2. Navigate to the project directory:
     ```sh
