@@ -1,10 +1,10 @@
 # Laravel Project
 
-This is a web application built with Laravel for the backend and Vue.js for the frontend.
+This is a web application built with Laravel 8 for the backend and Vue.js for the frontend.
 
 ## Requirements
 
-- PHP >= 7.3
+- PHP 7.3 to 8.0
 - Composer
 - Node.js and npm
 
