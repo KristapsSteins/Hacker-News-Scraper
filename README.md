@@ -1,6 +1,6 @@
 # Laravel Project
 
-This is a web application built with the Laravel framework.
+This is a web application built with Laravel for the backend and Vue.js for the frontend.
 
 ## Requirements
 
