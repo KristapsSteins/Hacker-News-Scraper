@@ -20,7 +20,7 @@ This is a web application built with Laravel for the backend and Vue.js for the 
     ```
 3. Install PHP dependencies:
     ```sh
-    composer install
+    composer update
     ```
 4. Install JavaScript dependencies:
     ```sh
