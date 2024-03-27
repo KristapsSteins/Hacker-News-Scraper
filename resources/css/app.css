@@ -1,0 +1,13 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper {
+    min-width: 300px;
+    width: 100%;
+}
+.form-btn {
+    font-size: 1.0rem;
+    width: 100%;
+}

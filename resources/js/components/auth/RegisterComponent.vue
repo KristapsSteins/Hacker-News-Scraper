@@ -1,19 +1,19 @@
 <template>
-    <div>
+    <div class="form-container">
         <el-card class="box-card">
-            <div>
-                <el-form :model="model" :rules="rules" ref="registerForm">
+            <div class="form-wrapper">
+                <el-form :model="model" :rules="rules" ref="registerForm" @keydown.enter.native="register">
                     <el-form-item label="Name" required prop="name">
-                        <el-input v-model="model.name" aria-placeholder="Your Name" @keydown.enter.native="register('registerForm')"></el-input>
+                        <el-input v-model="model.name" aria-placeholder="Your Name"></el-input>
                     </el-form-item>
                     <el-form-item label="Email" prop="email">
-                        <el-input v-model="model.email" @keydown.enter.native="register('registerForm')"></el-input>
+                        <el-input v-model="model.email"></el-input>
                     </el-form-item>
                     <el-form-item label="Password" prop="password">
-                        <el-input type="password" v-model="model.password" @keydown.enter.native="register('registerForm')"></el-input>
+                        <el-input type="password" v-model="model.password"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="register('registerForm')">Register</el-button>
+                        <el-button class="form-btn" type="primary" @click="register">Register</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -48,8 +48,8 @@
         mounted() {
         },
         methods: {
-            async register(formName) {
-                const valid = await this.$refs[formName].validate();
+            async register() {
+                const valid = await this.$refs.registerForm.validate();
                 if (!valid) return false;
 
                 const loader = this.$showLoader();
@@ -72,7 +72,7 @@
                 if (response.data.status) {
                     setTimeout(() => {
                         window.location.href = '/login';
-                    }, 2000);
+                    }, 500);
                 }
             },
             handleError(error) {

@@ -6533,13 +6533,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    login: function login(formName) {
+    login: function login() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _this.$refs[formName].validate( /*#__PURE__*/function () {
+              _this.$refs.loginForm.validate( /*#__PURE__*/function () {
                 var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(valid) {
                   return _regeneratorRuntime().wrap(function _callee$(_context) {
                     while (1) switch (_context.prev = _context.next) {
@@ -6672,7 +6672,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {},
   methods: {
-    register: function register(formName) {
+    register: function register() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var valid, loader, response;
@@ -6680,7 +6680,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _this.$refs[formName].validate();
+              return _this.$refs.registerForm.validate();
             case 2:
               valid = _context.sent;
               if (valid) {
@@ -6722,7 +6722,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (response.data.status) {
         setTimeout(function () {
           window.location.href = '/login';
-        }, 2000);
+        }, 500);
       }
     },
     handleError: function handleError(error) {
@@ -6815,6 +6815,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty(_defineProperty({
   name: 'news-table-component',
@@ -6822,6 +6837,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   data: function data() {
     var _this = this;
     return {
+      showDeleteConfirmModal: false,
+      selectedRow: null,
       tableData: [],
       pagination: {
         currentPage: 1,
@@ -6893,6 +6910,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     }, _callee);
   }))();
 }), "methods", {
+  openDeleteConfirmModal: function openDeleteConfirmModal(row) {
+    this.selectedRow = row;
+    this.showDeleteConfirmModal = true;
+  },
+  closeDeleteConfirmModal: function closeDeleteConfirmModal() {
+    this.showDeleteConfirmModal = false;
+  },
+  deleteItem: function deleteItem() {
+    this.handleDelete(this.selectedRow);
+    this.closeDeleteConfirmModal();
+  },
   fetchData: function fetchData() {
     var _this3 = this;
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
@@ -13281,10 +13309,10 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/element-ui/lib/theme-chalk/index.css":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/element-ui/lib/theme-chalk/index.css ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/element-ui/lib/theme-chalk/index.css":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/element-ui/lib/theme-chalk/index.css ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -99176,6 +99204,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/app.css":
+/*!*******************************!*\
+  !*** ./resources/css/app.css ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/normalize-wheel/index.js":
 /*!***********************************************!*\
   !*** ./node_modules/normalize-wheel/index.js ***!
@@ -100949,7 +100990,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./index.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/element-ui/lib/theme-chalk/index.css");
+/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../../postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./index.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/element-ui/lib/theme-chalk/index.css");
 
             
 
@@ -100958,11 +100999,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -101628,16 +101669,29 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "form-container" },
     [
       _c("el-card", { staticClass: "box-card" }, [
         _c(
           "div",
+          { staticClass: "form-wrapper" },
           [
             _c(
               "el-form",
               {
                 ref: "loginForm",
                 attrs: { model: _vm.model, rules: _vm.rules },
+                nativeOn: {
+                  keydown: function ($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.login.apply(null, arguments)
+                  },
+                },
               },
               [
                 _c(
@@ -101645,23 +101699,6 @@ var render = function () {
                   { attrs: { label: "Email", prop: "email" } },
                   [
                     _c("el-input", {
-                      nativeOn: {
-                        keydown: function ($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          return _vm.login("loginForm")
-                        },
-                      },
                       model: {
                         value: _vm.model.email,
                         callback: function ($$v) {
@@ -101680,23 +101717,6 @@ var render = function () {
                   [
                     _c("el-input", {
                       attrs: { type: "password" },
-                      nativeOn: {
-                        keydown: function ($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          return _vm.login("loginForm")
-                        },
-                      },
                       model: {
                         value: _vm.model.password,
                         callback: function ($$v) {
@@ -101715,12 +101735,9 @@ var render = function () {
                     _c(
                       "el-button",
                       {
+                        staticClass: "form-btn",
                         attrs: { type: "primary" },
-                        on: {
-                          click: function ($event) {
-                            return _vm.login("loginForm")
-                          },
-                        },
+                        on: { click: _vm.login },
                       },
                       [_vm._v("Login")]
                     ),
@@ -101763,16 +101780,29 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "form-container" },
     [
       _c("el-card", { staticClass: "box-card" }, [
         _c(
           "div",
+          { staticClass: "form-wrapper" },
           [
             _c(
               "el-form",
               {
                 ref: "registerForm",
                 attrs: { model: _vm.model, rules: _vm.rules },
+                nativeOn: {
+                  keydown: function ($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.register.apply(null, arguments)
+                  },
+                },
               },
               [
                 _c(
@@ -101781,23 +101811,6 @@ var render = function () {
                   [
                     _c("el-input", {
                       attrs: { "aria-placeholder": "Your Name" },
-                      nativeOn: {
-                        keydown: function ($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          return _vm.register("registerForm")
-                        },
-                      },
                       model: {
                         value: _vm.model.name,
                         callback: function ($$v) {
@@ -101815,23 +101828,6 @@ var render = function () {
                   { attrs: { label: "Email", prop: "email" } },
                   [
                     _c("el-input", {
-                      nativeOn: {
-                        keydown: function ($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          return _vm.register("registerForm")
-                        },
-                      },
                       model: {
                         value: _vm.model.email,
                         callback: function ($$v) {
@@ -101850,23 +101846,6 @@ var render = function () {
                   [
                     _c("el-input", {
                       attrs: { type: "password" },
-                      nativeOn: {
-                        keydown: function ($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          return _vm.register("registerForm")
-                        },
-                      },
                       model: {
                         value: _vm.model.password,
                         callback: function ($$v) {
@@ -101885,12 +101864,9 @@ var render = function () {
                     _c(
                       "el-button",
                       {
+                        staticClass: "form-btn",
                         attrs: { type: "primary" },
-                        on: {
-                          click: function ($event) {
-                            return _vm.register("registerForm")
-                          },
-                        },
+                        on: { click: _vm.register },
                       },
                       [_vm._v("Register")]
                     ),
@@ -101943,13 +101919,13 @@ var render = function () {
             {
               staticStyle: {
                 width: "100%",
-                height: "calc(100vh - 200px)",
-                overflow: "auto",
+                "/* height": "calc(100vh - 200px)",
+                "*/\n            /* overflow": "auto",
               },
               attrs: { data: _vm.tableData, stripe: true, border: true },
             },
             [
-              _vm._l(_vm.tableColumns, function (column, index) {
+              _vm._l(_vm.tableColumns, function (column) {
                 return _c("el-table-column", {
                   key: column.label,
                   attrs: {
@@ -101974,18 +101950,18 @@ var render = function () {
                     fn: function (ref) {
                       var row = ref.row
                       return [
-                        _c(
-                          "el-button",
-                          {
-                            attrs: { type: "danger", size: "mini" },
-                            on: {
-                              click: function ($event) {
-                                return _vm.handleDelete(row)
-                              },
+                        _c("el-button", {
+                          attrs: {
+                            type: "danger",
+                            icon: "el-icon-delete",
+                            circle: "",
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.openDeleteConfirmModal(row)
                             },
                           },
-                          [_vm._v("Delete")]
-                        ),
+                        }),
                       ]
                     },
                   },
@@ -102023,6 +101999,47 @@ var render = function () {
           ),
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          attrs: {
+            title: "Confirm deletion",
+            visible: _vm.showDeleteConfirmModal,
+            width: "30%",
+          },
+          on: {
+            "update:visible": function ($event) {
+              _vm.showDeleteConfirmModal = $event
+            },
+            close: _vm.closeDeleteConfirmModal,
+          },
+        },
+        [
+          _c("span", [_vm._v("Do you really want to delete this item?")]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "dialog-footer",
+              attrs: { slot: "footer" },
+              slot: "footer",
+            },
+            [
+              _c("el-button", { on: { click: _vm.closeDeleteConfirmModal } }, [
+                _vm._v("Cancel"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                { attrs: { type: "danger" }, on: { click: _vm.deleteItem } },
+                [_vm._v("Delete")]
+              ),
+            ],
+            1
+          ),
+        ]
       ),
     ],
     1
@@ -114307,7 +114324,8 @@ Vue.compile = compileToFunctions;
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

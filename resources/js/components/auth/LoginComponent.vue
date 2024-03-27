@@ -1,16 +1,16 @@
 <template>
-    <div>
+    <div class="form-container">
         <el-card class="box-card">
-            <div>
-                <el-form :model="model" :rules="rules" ref="loginForm">
+            <div class="form-wrapper">
+                <el-form :model="model" :rules="rules" ref="loginForm" @keydown.enter.native="login">
                     <el-form-item label="Email" prop="email">
-                        <el-input v-model="model.email" @keydown.enter.native="login('loginForm')"></el-input>
+                        <el-input v-model="model.email" ></el-input>
                     </el-form-item>
                     <el-form-item label="Password" prop="password">
-                        <el-input type="password" v-model="model.password" @keydown.enter.native="login('loginForm')"></el-input>
+                        <el-input type="password" v-model="model.password"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="login('loginForm')">Login</el-button>
+                        <el-button class="form-btn" type="primary" @click="login">Login</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 
 export default {
@@ -41,8 +42,8 @@ export default {
         }
     },
     methods: {
-        async login(formName) {
-            this.$refs[formName].validate(async (valid) => {
+        async login() {
+            this.$refs.loginForm.validate(async (valid) => {
                 if (valid) {
                     this.submitForm();
                 } else {

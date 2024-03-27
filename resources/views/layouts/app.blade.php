@@ -54,8 +54,9 @@
                         @endguest
                         @auth
                             <li class="nav-item">
+                                
                                 <a href="{{ route('logout') }}"
-                                    class="btn btn-primary"
+                                    class="btn btn-outline-secondary"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                         Logout

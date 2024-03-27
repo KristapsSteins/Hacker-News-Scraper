@@ -5,10 +5,13 @@
                 :data="tableData" 
                 :stripe = "true"
                 :border = "true"
-                style="width: 100%; height: calc(100vh - 200px); overflow: auto;"
+                style="width: 100%; 
+                /* height: calc(100vh - 200px);  */
+                /* overflow: auto; */
+                "
                 >
                 <el-table-column 
-                    v-for="(column, index) in tableColumns"
+                    v-for="(column) in tableColumns"
                     :key="column.label"
                     :label="column.label"
                     :prop="column.prop"
@@ -23,7 +26,7 @@
                 </el-table-column>
                 <el-table-column label="" align="center" header-align="center">
                     <template slot-scope="{ row }">
-                        <el-button type="danger" size="mini" @click="handleDelete(row)">Delete</el-button>
+                        <el-button type="danger" icon="el-icon-delete" circle @click="openDeleteConfirmModal(row)"></el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -39,6 +42,18 @@
                 ></el-pagination>
             </div>
         </el-card>
+        <el-dialog
+            title="Confirm deletion"
+            :visible.sync="showDeleteConfirmModal"
+            width="30%"
+            @close="closeDeleteConfirmModal"
+            >
+            <span>Do you really want to delete this item?</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="closeDeleteConfirmModal">Cancel</el-button>
+                <el-button type="danger" @click="deleteItem">Delete</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -49,6 +64,8 @@
         },
         data() {
             return {
+                showDeleteConfirmModal: false,
+                selectedRow: null,
                 tableData: [],
                 pagination: {
                     currentPage: 1,
@@ -108,6 +125,17 @@
             this.fetchData();
         },
         methods: {
+            openDeleteConfirmModal(row) {
+                this.selectedRow = row;
+                this.showDeleteConfirmModal = true;
+            },
+            closeDeleteConfirmModal() {
+                this.showDeleteConfirmModal = false;
+            },
+            deleteItem() {
+                this.handleDelete(this.selectedRow);
+                this.closeDeleteConfirmModal();
+            },
             async fetchData() {
                 try {
                     const response = await axios.post('/get-newsData', {
