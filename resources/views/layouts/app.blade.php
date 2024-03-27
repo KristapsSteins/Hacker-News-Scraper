@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -53,19 +54,28 @@
                             @endif
                         @endguest
                         @auth
-                            <li class="nav-item">
-                                
-                                <a href="{{ route('logout') }}"
-                                    class="btn btn-outline-secondary"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                        Logout
-                                </a>
-                        
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
+                            <div class="nav-item dropdown">
+                                <div class="d-flex" id="account_settings" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="d-flex flex-column">
+                                        {{ Auth::user()->name }}
+                                        <span style="font-size: 0.8rem">{{ Auth::user()->email }}<span>
+                                    </div>
+                                    <div class="align-self-center" style="padding-left: 10px">
+                                        <i class="fa-solid fa-caret-down" id="caret-icon" style="font-size: 1.2rem"></i>
+                                    </div>
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="account_settings">
+                                    <a href="{{ route('logout') }}"
+                                        class="dropdown-item"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="fa-solid fa-right-from-bracket"></i> &nbsp; Sign-out
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
                         @endauth
                     </ul>
                 </div>
@@ -79,4 +89,20 @@
         </main>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.getElementById('account_settings');
+        var caretIcon = document.getElementById('caret-icon');
+    
+        dropdown.addEventListener('show.bs.dropdown', function () {
+            caretIcon.classList.remove('fa-caret-down');
+            caretIcon.classList.add('fa-caret-up');
+        });
+    
+        dropdown.addEventListener('hide.bs.dropdown', function () {
+            caretIcon.classList.remove('fa-caret-up');
+            caretIcon.classList.add('fa-caret-down');
+        });
+    });
+    </script>
 </html>
