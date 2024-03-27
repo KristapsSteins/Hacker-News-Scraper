@@ -22,7 +22,7 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->randomNumber(),
+            'id' => $this->faker->randomNumber(5),
             'title' => $this->faker->sentence,
             'link' => $this->faker->url,
             'points' => $this->faker->randomNumber(),

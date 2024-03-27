@@ -28,19 +28,16 @@ class NewsControllerTest extends TestCase
         ]);
     }
 
-    // public function testDeleteArticle()
-    // {
-    //     $article = Article::factory()->create();
+    public function testDeleteArticle()
+    {
+        $article = Article::factory()->create([
+            'id' => 123456789,
+        ]);
+        $article['id'] = 123456789;
 
-    //     $response = $this->delete("/delete-news/{$article->id}");
+        $response = $this->delete("/delete-news/{$article->id}");
 
-    //     $response->assertStatus(200);
-
-    //     $response->assertJson([
-    //         'status' => true,
-    //         'message' => 'News item deleted successfully'
-    //     ]);
-
-    //     $this->assertDatabaseMissing('articles', ['id' => $article->id]);
-    // }
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('articles', ['id' => $article->id]);
+    }
 }

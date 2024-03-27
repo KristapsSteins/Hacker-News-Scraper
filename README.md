@@ -60,5 +60,5 @@ This will scrape the top 100 news items from the Hacker News API.
 Run the tests with:
 
 ```sh
-vendor/bin/phpunit
+php artisan test
 ```
