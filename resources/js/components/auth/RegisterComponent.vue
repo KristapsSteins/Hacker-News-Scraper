@@ -4,13 +4,13 @@
             <div>
                 <el-form :model="model" :rules="rules" ref="registerForm">
                     <el-form-item label="Name" required prop="name">
-                        <el-input v-model="model.name" aria-placeholder="Your Name" @keydown.enter.native="login('registerForm')"></el-input>
+                        <el-input v-model="model.name" aria-placeholder="Your Name" @keydown.enter.native="register('registerForm')"></el-input>
                     </el-form-item>
                     <el-form-item label="Email" prop="email">
-                        <el-input v-model="model.email" @keydown.enter.native="login('registerForm')"></el-input>
+                        <el-input v-model="model.email" @keydown.enter.native="register('registerForm')"></el-input>
                     </el-form-item>
                     <el-form-item label="Password" prop="password">
-                        <el-input type="password" v-model="model.password" @keydown.enter.native="login('registerForm')"></el-input>
+                        <el-input type="password" v-model="model.password" @keydown.enter.native="register('registerForm')"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="register('registerForm')">Register</el-button>

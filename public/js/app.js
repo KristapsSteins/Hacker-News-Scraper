@@ -101795,7 +101795,7 @@ var render = function () {
                           ) {
                             return null
                           }
-                          return _vm.login("registerForm")
+                          return _vm.register("registerForm")
                         },
                       },
                       model: {
@@ -101829,7 +101829,7 @@ var render = function () {
                           ) {
                             return null
                           }
-                          return _vm.login("registerForm")
+                          return _vm.register("registerForm")
                         },
                       },
                       model: {
@@ -101864,7 +101864,7 @@ var render = function () {
                           ) {
                             return null
                           }
-                          return _vm.login("registerForm")
+                          return _vm.register("registerForm")
                         },
                       },
                       model: {
